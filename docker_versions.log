@@ -1,0 +1,29 @@
+-------------------------------
+v. 20230103
+
+Docker container built on stevepieper/slicer:5.0.3
+
+Slicer extensions added to stevepieper/slicer:5.0.3:
+
+- SlicerDcm2nii,
+- Sandbox,
+- RawImageGuess,
+- SurfaceWrapSolidify,
+- MarkupsToModel,
+- SegmentEditorExtraEffects,
+- SlicerIGT,
+- Auto3dgm,
+- SlicerMorph
+- SegmentMesher
+
+Python packages installed:
+
+- notebook
+- jupyterhub
+- jupyterlab
+- scikit-image
+- pyvista
+- trimesh
+- aicsimageio
+- aicspylibczi
+- matplotlib

@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  slicer-u0128401:
+    image: "gnasello/slicer-env:latest"
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - /home/luna.kuleuven.be/u0128401/:/home/researcher/mounted_volume
+    working_dir: /home/researcher
+    #stdin_open: true # to have an interactive shell with the docker-compose setup
+    #tty: true # to have an interactive shell with the docker-compose setup

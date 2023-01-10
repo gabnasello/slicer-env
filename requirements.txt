@@ -1,0 +1,9 @@
+notebook
+jupyterhub
+jupyterlab
+scikit-image
+pyvista
+trimesh
+aicsimageio
+aicspylibczi
+matplotlib
