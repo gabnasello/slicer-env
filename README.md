@@ -16,9 +16,9 @@ From the project folder, run the command below:
 
 ```docker-compose up -d```
 
-You can get an interactive shell of the running docker-compose service with:
+You can get an interactive shell of the running docker-compose service with (slicer is the {SERVICENAME}):
 
-```docker-compose exec {SERVICENAME} bash```
+```docker-compose exec slicer bash```
 
 Then close the container with:
 
@@ -41,7 +41,3 @@ After use, you close the container with:
 # Use the Docker
 
 Open ```localhost:8080``` in your browser and click the "X11 Session" button
-
-gbw-d-l0110:8080
-
-/opt/slicer/bin/PythonSlicer -m jupyter lab --port=8888 --allow-root --ip=0.0.0.0 --no-browser --NotebookApp.default_url=/lab/

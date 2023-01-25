@@ -44,13 +44,4 @@ while getopts ":hp:" option; do
    esac
 done
 
-#export SHELL=/bin/bash; xvfb-run --auto-servernum /opt/slicer/bin/PythonSlicer -m jupyter lab --port=$Port --ip=0.0.0.0 --allow-root --no-browser
-
-export SHELL=/bin/bash; xvfb-run --auto-servernum /opt/slicer/Slicer -c "slicer.util._executePythonModule('jupyter',['lab', '--port=${Port}', '--allow-root', '--ip=0.0.0.0', '--no-browser'])"
-
-
-# xvfb-run --auto-servernum \
-# /opt/slicer/Slicer -c "slicer.util._executePythonModule('jupyter',['lab', '--port=8888', '--allow-root', '--ip=0.0.0.0', '--no-browser'])"
-
-# xvfb-run --auto-servernum \
-# /opt/slicer/bin/Slicer -m jupyter lab --port=7777 --ip=0.0.0.0 --allow-root --no-browser
+export SHELL=/bin/bash; jupyter lab --allow-root --port=$Port --ip=0.0.0.0
