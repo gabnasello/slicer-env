@@ -6,9 +6,11 @@ services:
     build: .
     ports:
       - $GUIPORT:8080
+      - $JLPORT:8888
     volumes:
       - $HOME_RESEARCHER:/home/researcher/mounted_volume # change the path before ":" with the volume you want to mount
     working_dir: /home/researcher
     environment:
        - GUIPORT=${GUIPORT}
+       - JLPORT=${JLPORT}
        - HOME_RESEARCHER=${HOME_RESEARCHER}

@@ -41,3 +41,14 @@ After use, you close the container with:
 # Use the Docker
 
 Open ```localhost:8080``` in your browser and click the "X11 Session" button
+
+# Fire Jupyter Lab Server
+
+- Within Slicer GUI, go to ```Modules -> Developer Tools -> JupyterKernel```, choose the home directory for the Jupyter Lab Server and press the ```Start Jupyter server``` button.
+
+**TO DO**: start the Jupyter Server with the command ```slicer.modules.jupyterkernel.startInternalJupyterServer('/home/researcher')```
+
+- Move to the Python Interactor window and run the command
+```slicer.util._executePythonModule("jupyter", ["server", "list"])```
+
+- Copy the token and insert it when opening ```localhost:8888``` in your browser

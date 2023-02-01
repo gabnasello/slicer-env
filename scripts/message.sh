@@ -11,3 +11,7 @@ GREEN='\033[0;32m'
 echo -e $GREEN'   Slicer GUI\n'$NOCOLOR
 
 echo -e 'http://'$HOST_NAME':'$GUIPORT'\n\n'
+
+echo -e $GREEN'   Slicer Jupyter (ONLY after activation from Slicer GUI)\n'$NOCOLOR
+
+echo -e 'http://'$HOST_NAME':'$JLPORT'\n\n'
