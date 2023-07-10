@@ -31,16 +31,17 @@ def install_slicer_extension(extensionName):
 if __name__ == '__main__':
 
     extension_list= ['SlicerJupyter',
-                    'SlicerDcm2nii',
-                    'Sandbox',
-                    'RawImageGuess',
-                    'SurfaceWrapSolidify',
-                    'MarkupsToModel',
-                    'SegmentEditorExtraEffects', 
-                    'SlicerIGT',
-                    'Auto3dgm',
-                    'SlicerMorph',
-                    'SegmentMesher']
+                     'SlicerDcm2nii',
+                     'Sandbox',
+                     'RawImageGuess',
+                     'SurfaceWrapSolidify',
+                     'MarkupsToModel',
+                     'SegmentEditorExtraEffects', 
+                     'SlicerIGT',
+                     'Auto3dgm',
+                     'SlicerMorph',
+                     'SegmentMesher',
+                     'EasyClip']
 
     for pckg in extension_list:
 
