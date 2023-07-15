@@ -2,13 +2,16 @@ version: '3'
 
 services:
   slicer:
-    image: gnasello/slicer-env:2023-07-06
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix:ro
-    environment:
-      - DISPLAY=0
-    devices:
-      - /dev/dri/
-    entrypoint: /opt/slicer/Slicer
+    image: gnasello/slicer-env:2023-07-10
+#    volumes:
+#      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+#    environment:
+#      - DISPLAY=0
+#    devices:
+#      - /dev/dri/
+    ports:
+#      - 8888:8888
+      - 9876:9876
+    #entrypoint: /opt/slicer/Slicer
     stdin_open: true # docker run -i
     tty: true        # docker run -t

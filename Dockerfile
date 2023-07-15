@@ -7,7 +7,7 @@ FROM ubuntu:22.10
 
 # Configure environment
 ENV DOCKER_IMAGE_NAME='slicer-env'
-ENV VERSION='2023-07-06.1' 
+ENV VERSION='2023-07-10' 
 
 # Not installing suggested or recommended dependencies in Ubuntu image
 # https://octopus.com/blog/using-ubuntu-docker-image
@@ -43,13 +43,7 @@ RUN SLICER_URL="https://download.slicer.org/bitstream/63f5bee68939577d9867b4c7" 
   curl -k -v -s -L $SLICER_URL | tar xz -C /tmp && \
   mv /tmp/Slicer* /opt/slicer
 
-ENTRYPOINT [ "/opt/slicer/Slicer" ]
-
-# COPY install_SlicerExtensions.py /tmp
-
-# # add requests as helper package
-# RUN su researcher -c "xvfb-run --auto-servernum \
-#       /opt/slicer/Slicer --python-script /tmp/install_SlicerExtensions.py" ; 
+#ENTRYPOINT [ "/opt/slicer/Slicer" ]
 
 COPY install_SlicerExtensions.py /
 
@@ -57,7 +51,6 @@ COPY install_SlicerExtensions.py /
 RUN xvfb-run --auto-servernum \
     /opt/slicer/Slicer --python-script /install_SlicerExtensions.py 
 
-# Install external Python packages
 ADD requirements.txt /
 RUN /opt/slicer/bin/PythonSlicer -m pip install --upgrade pip && \
     /opt/slicer/bin/PythonSlicer -m pip install -r /requirements.txt
@@ -65,5 +58,65 @@ RUN /opt/slicer/bin/PythonSlicer -m pip install --upgrade pip && \
 RUN xvfb-run --auto-servernum \
     /opt/slicer/Slicer -c 'slicer.modules.jupyterkernel.installInternalJupyterServer()'
 
-# ADD scripts/message.sh .
-# RUN echo "bash /message.sh" >> ~/.bashrc
+#########################################################
+# Extend napari with a preconfigured Xpra server target #
+#########################################################
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install graphical libraries
+RUN apt-get update && \
+    apt-get install -y \
+        build-essential \
+        mesa-utils \
+        libgl1-mesa-glx \
+        libglib2.0-0 \
+        libdbus-1-3 \
+        libxi6 \
+        libxcb-icccm4 \
+        libxcb-image0 \
+        libxcb-keysyms1 \
+        libxcb-randr0 \
+        libxcb-render-util0 \
+        libxcb-xinerama0 \
+        libxcb-xinput0 \
+        libxcb-xfixes0 \
+        libxcb-shape0
+
+ENV DISTRO=jammy
+
+# Install Xpra and dependencies
+RUN apt-get install -y wget && \
+    # add xpra GPG key:
+    wget -O "/usr/share/keyrings/xpra.asc" https://xpra.org/xpra.asc && \
+    # add the xpra repository:
+    wget -O "/etc/apt/sources.list.d/xpra.sources" https://xpra.org/repos/$DISTRO/xpra.sources
+
+# Install Xpra and dependencies
+RUN apt-get update && \
+    apt-get install -yqq \
+        xpra && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV DISPLAY=:100
+ENV XPRA_PORT=9876
+ENV XPRA_START="/opt/slicer/Slicer"
+ENV XPRA_EXIT_WITH_CLIENT="yes"
+ENV XPRA_XVFB_SCREEN="1920x1080x24+32"
+EXPOSE 9876
+
+CMD echo "Launching 3D Slicer on Xpra. Connect via http://localhost:$XPRA_PORT"; \
+    xpra start \
+    --bind-tcp=0.0.0.0:$XPRA_PORT \
+    --html=on \
+    --start="$XPRA_START" \
+    --exit-with-client="$XPRA_EXIT_WITH_CLIENT" \
+    --daemon=no \
+    --xvfb="/usr/bin/Xvfb +extension Composite -screen 0 $XPRA_XVFB_SCREEN -nolisten tcp -noreset" \
+    --pulseaudio=no \
+    --notifications=no \
+    --bell=no \
+    $DISPLAY
+
+ENTRYPOINT []
