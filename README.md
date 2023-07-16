@@ -12,13 +12,13 @@ From the project folder, run the command below:
 
 From the project folder, run the command below:
 
-```docker-compose up```
+```docker-compose up -d```
 
 ## Alternative approach
 
 You can run the following command:
 
-```docker run -it -p 3000:3000 gnasello/slicer-env:2023-07-14```
+```docker run -it -d -p 3000:3000 gnasello/slicer-env:latest```
 
 # Use the Docker
 
