@@ -1,17 +1,27 @@
-version: '3'
-
+---
+version: "3"
 services:
-  slicer:
-    image: gnasello/slicer-env:2023-07-10
-#    volumes:
-#      - /tmp/.X11-unix:/tmp/.X11-unix:ro
-#    environment:
-#      - DISPLAY=0
-#    devices:
-#      - /dev/dri/
+  slicer-env:
+    #image: lscr.io/linuxserver/webtop:latest
+    #image: lscr.io/linuxserver/webtop:amd64-ubuntu-kde-version-0f29909a
+    image: gnasello/slicer-env:2023-07-16
+    container_name: webtop
+    security_opt:
+      - seccomp:unconfined # for terminal to work
+    environment:
+      - PUID=1000
+      #- PUID=664931380
+      - PGID=1000
+      #- PGID=664200513
+      - TZ=Etc/UTC
+      #- SUBFOLDER=/ #optional
+      - TITLE=3D Slicer #optional
+    #volumes:
+      #- /path/to/directory:/config/researcher_home
+      #- /var/run/docker.sock:/var/run/docker.sock #optional
     ports:
-#      - 8888:8888
-      - 9876:9876
-    #entrypoint: /opt/slicer/Slicer
-    stdin_open: true # docker run -i
-    tty: true        # docker run -t
+      - 3000:3000
+      - 3001:3001
+    #devices:
+      #- /dev/dri:/dev/dri #optional
+    shm_size: "1gb" #optional
