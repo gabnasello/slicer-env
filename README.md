@@ -22,7 +22,7 @@ You can run the following command:
 
 # Use the Docker
 
-Open ```localhost:3000``` in your browser to get a virtual desktop already running 3D Slicer.
+Open ```localhost:3000``` in your browser to get a virtual desktop.
 
 ## Fire Jupyter Lab Server
 
