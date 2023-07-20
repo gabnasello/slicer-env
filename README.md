@@ -1,4 +1,4 @@
-# Acknowledgements
+# Docker Image for 3D Slicer application from web broswer
 
 # Build the docker images
 
