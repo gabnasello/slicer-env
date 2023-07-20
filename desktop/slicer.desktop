@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=3D Slicer
 Comment=3D Slicer
-Exec=/config/slicer/Slicer 
-Icon=/config/slicer/lib/Slicer-5.2/qt-scripted-modules/Resources/docroot/images/3DSlicer-DesktopIcon.png
+Exec=/slicer/Slicer 
+Icon=/slicer/lib/Slicer-5.2/qt-scripted-modules/Resources/docroot/images/3DSlicer-DesktopIcon.png
 Terminal=false
 Type=Application

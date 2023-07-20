@@ -3,7 +3,7 @@ FROM lscr.io/linuxserver/webtop:amd64-ubuntu-kde-version-0f29909a
 
 # Configure environment
 ENV DOCKER_IMAGE_NAME='slicer-env'
-ENV VERSION='2023-07-16' 
+ENV VERSION='2023-07-20' 
 
 # title
 ENV TITLE=3DSlicer
@@ -16,7 +16,7 @@ VOLUME /config
 ## Install Slicer
 
 RUN apt-get update && \
-    apt-get install -y vim xvfb git apt-transport-https ca-certificates\ 
+    apt-get install -y vim xvfb git wget apt-transport-https ca-certificates\ 
                         libfontconfig1 \
                         libxrender1 \
                         libgl1-mesa-dev \
@@ -40,10 +40,12 @@ RUN apt-get update && \
 # Slicer 5.0.3 https://download.slicer.org/bitstream/62cc52d2aa08d161a31c1af0
 # Slicer 5.2.2
 RUN SLICER_URL="https://download.slicer.org/bitstream/63f5bee68939577d9867b4c7" && \
-  curl -k -v -s -L $SLICER_URL | tar xz -C /tmp && \
-  mv /tmp/Slicer* /config/slicer
+  wget -O Slicer.tar.gz $SLICER_URL && \
+  tar xfz /Slicer.tar.gz -C /tmp && \
+  #rm Slicer.tar.gz && \
+  mv /tmp/Slicer* /slicer
 
-#RUN chmod 777 -R /config/slicer
+RUN chmod 777 -R /slicer
 
 COPY /desktop/slicer.desktop /usr/share/applications/
 COPY /desktop/slicer.desktop /config/Desktop/
@@ -52,13 +54,13 @@ RUN chmod 777 /config/Desktop/slicer.desktop
 COPY install_SlicerExtensions.py /
 
 # add requests as helper package
-RUN xvfb-run --auto-servernum /config/slicer/Slicer --no-splash --no-main-window --python-script /install_SlicerExtensions.py
+RUN xvfb-run --auto-servernum /slicer/Slicer --no-splash --no-main-window --python-script /install_SlicerExtensions.py
 
 ADD requirements.txt /
-RUN /config/slicer/bin/PythonSlicer -m pip install --upgrade pip && \
-    /config/slicer/bin/PythonSlicer -m pip install -r /requirements.txt
+RUN /slicer/bin/PythonSlicer -m pip install --upgrade pip && \
+    /slicer/bin/PythonSlicer -m pip install -r /requirements.txt
 
-RUN xvfb-run --auto-servernum /config/slicer/Slicer --no-splash --no-main-window -c 'slicer.modules.jupyterkernel.installInternalJupyterServer()'
+RUN xvfb-run --auto-servernum /slicer/Slicer --no-splash --no-main-window -c 'slicer.modules.jupyterkernel.installInternalJupyterServer()'
 
-RUN chmod 777 -R /config/.cache
-RUN chmod 777 -R /config/.local
+#RUN chmod 777 -R /config/.cache
+#RUN chmod 777 -R /config/.local

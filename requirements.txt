@@ -7,3 +7,4 @@ trimesh
 aicsimageio
 aicspylibczi
 matplotlib
+pymeshlab
