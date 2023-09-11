@@ -3,7 +3,7 @@ FROM lscr.io/linuxserver/webtop:amd64-ubuntu-kde-version-0f29909a
 
 # Configure environment
 ENV DOCKER_IMAGE_NAME='slicer-env'
-ENV VERSION='2023-07-20' 
+ENV VERSION='2023-09-11' 
 
 # title
 ENV TITLE=3DSlicer
@@ -38,8 +38,9 @@ RUN apt-get update && \
 
 # Slicer 4.11.20200930 https://download.slicer.org/bitstream/60add70fae4540bf6a89bfb4" && \
 # Slicer 5.0.3 https://download.slicer.org/bitstream/62cc52d2aa08d161a31c1af0
-# Slicer 5.2.2
-RUN SLICER_URL="https://download.slicer.org/bitstream/63f5bee68939577d9867b4c7" && \
+# Slicer 5.2.2 https://download.slicer.org/bitstream/63f5bee68939577d9867b4c7
+# Slicer 5.4.0 
+RUN SLICER_URL="https://download.slicer.org/bitstream/64e0b4a006a93d6cff3638ce" && \
   wget -O Slicer.tar.gz $SLICER_URL && \
   tar xfz /Slicer.tar.gz -C /tmp && \
   #rm Slicer.tar.gz && \
@@ -59,6 +60,10 @@ RUN xvfb-run --auto-servernum /slicer/Slicer --no-splash --no-main-window --pyth
 ADD requirements.txt /
 RUN /slicer/bin/PythonSlicer -m pip install --upgrade pip && \
     /slicer/bin/PythonSlicer -m pip install -r /requirements.txt
+
+# Install pyslicer
+RUN git clone https://github.com/gabnasello/pyslicer.git
+RUN /slicer/bin/PythonSlicer -m pip install -e pyslicer/
 
 RUN xvfb-run --auto-servernum /slicer/Slicer --no-splash --no-main-window -c 'slicer.modules.jupyterkernel.installInternalJupyterServer()'
 

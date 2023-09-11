@@ -1,4 +1,11 @@
 -------------------------------
+v. 2023-09-11
+
+Update to Slicer 5.4.0
+
+Install pyslicer package [https://github.com/gabnasello/pyslicer.git]
+
+-------------------------------
 v. 2023-07-20
 
 Install pymeshlab package 
