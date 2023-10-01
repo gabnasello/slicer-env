@@ -3,7 +3,7 @@ FROM lscr.io/linuxserver/webtop:amd64-ubuntu-kde-version-0f29909a
 
 # Configure environment
 ENV DOCKER_IMAGE_NAME='slicer-env'
-ENV VERSION='2023-09-18' 
+ENV VERSION='2023-10-01' 
 
 # title
 ENV TITLE=3DSlicer
@@ -67,5 +67,6 @@ RUN /slicer/bin/PythonSlicer -m pip install -e pyslicer/
 
 RUN xvfb-run --auto-servernum /slicer/Slicer --no-splash --no-main-window -c 'slicer.modules.jupyterkernel.installInternalJupyterServer()'
 
+RUN chmod 777 -R /config/
 #RUN chmod 777 -R /config/.cache
 #RUN chmod 777 -R /config/.local
