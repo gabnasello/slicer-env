@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=SlicerJupyter
+Comment=Run JupyterLab in Slicer
+Exec=/slicer/Slicer --c "slicer.util._executePythonModule('jupyter',['lab'])"
+Terminal=true
+Type=Application
+Icon=/jupyter_logo.png
+StartupNotify=true
+MimeType=application/x-ipynb+json;
+Categories=Development;Education;
+Keywords=python;
