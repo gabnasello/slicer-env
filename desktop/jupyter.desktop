@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=SlicerJupyter
+Name=Slicer Jupyter
 Comment=Run JupyterLab in Slicer
-Exec=/slicer/Slicer --c "slicer.util._executePythonModule('jupyter',['lab'])"
+Exec=/slicer/Slicer --c "slicer.modules.jupyterkernel.updateKernelSpec(); import jupyter_client; jupyter_client.kernelspec.KernelSpecManager().install_kernel_spec(slicer.modules.jupyterkernel.kernelSpecPath(), user=True, replace=True); slicer.util._executePythonModule('jupyter',['lab'])"
 Terminal=true
 Type=Application
 Icon=/jupyter_logo.png

@@ -3,10 +3,10 @@ FROM lscr.io/linuxserver/webtop:amd64-ubuntu-kde-version-0f29909a
 
 # Configure environment
 ENV DOCKER_IMAGE_NAME='slicer-env'
-ENV VERSION='2023-10-07' 
+ENV VERSION='2023-10-10' 
 
 # title
-ENV TITLE=3DSlicer
+ENV TITLE="3D Slicer"
 
 # ports and volumes
 EXPOSE 3000
