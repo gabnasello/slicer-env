@@ -4,7 +4,7 @@ Comment=Run JupyterLab in Slicer
 Exec=/slicer/Slicer --c "slicer.modules.jupyterkernel.updateKernelSpec(); import jupyter_client; jupyter_client.kernelspec.KernelSpecManager().install_kernel_spec(slicer.modules.jupyterkernel.kernelSpecPath(), user=True, replace=True); slicer.util._executePythonModule('jupyter',['lab'])"
 Terminal=true
 Type=Application
-Icon=/jupyter_logo.png
+Icon=/slicer/lib/Python/lib/python3.9/site-packages/ipywidgets/widgets/tests/data/jupyter-logo-transparent.png
 StartupNotify=true
 MimeType=application/x-ipynb+json;
 Categories=Development;Education;

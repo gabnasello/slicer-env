@@ -1,4 +1,11 @@
 -------------------------------
+v. 2023-11-29
+
+Update to Slicer 5.6.0
+
+Remove jupyter_logo.png file
+
+-------------------------------
 v. 2023-10-10
 
 Update jupyer.desktop file to directly start Slicer kernel
