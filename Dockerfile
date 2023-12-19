@@ -1,9 +1,9 @@
-FROM lscr.io/linuxserver/webtop:amd64-ubuntu-kde-version-0f29909a
+FROM lscr.io/linuxserver/webtop:amd64-ubuntu-kde-version-b7c41cf2
 #FROM lscr.io/linuxserver/webtop:ubuntu-xfce-version-5b58d96e
 
 # Configure environment
 ENV DOCKER_IMAGE_NAME='slicer-env'
-ENV VERSION='2023-11-29' 
+ENV VERSION='2023-12-19' 
 
 # title
 ENV TITLE="3D Slicer"
