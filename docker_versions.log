@@ -1,4 +1,9 @@
 -------------------------------
+v. 2023-12-20
+
+Update to Slicer 5.6.1
+
+-------------------------------
 v. 2023-12-19
 
 Update base Docker image (linuxserver/webtop) to amd64-ubuntu-kde-version-b7c41cf2
