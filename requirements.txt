@@ -8,3 +8,4 @@ aicsimageio
 aicspylibczi
 matplotlib
 pymeshlab
+papermill

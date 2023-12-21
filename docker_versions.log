@@ -1,4 +1,11 @@
 -------------------------------
+v. 2023-12-21
+
+Install the following Python package(s):
+
+- papermill
+
+-------------------------------
 v. 2023-12-20
 
 Update to Slicer 5.6.1

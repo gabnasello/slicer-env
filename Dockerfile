@@ -3,7 +3,7 @@ FROM lscr.io/linuxserver/webtop:amd64-ubuntu-kde-version-b7c41cf2
 
 # Configure environment
 ENV DOCKER_IMAGE_NAME='slicer-env'
-ENV VERSION='2023-12-20' 
+ENV VERSION='2023-12-21' 
 
 # title
 ENV TITLE="3D Slicer"
