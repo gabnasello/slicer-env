@@ -3,7 +3,7 @@ FROM lscr.io/linuxserver/webtop:amd64-ubuntu-kde-version-b7c41cf2
 
 # Configure environment
 ENV DOCKER_IMAGE_NAME='slicer-env'
-ENV VERSION='2023-12-21' 
+ENV VERSION='2024-05-07' 
 
 # title
 ENV TITLE="3D Slicer"
@@ -40,8 +40,9 @@ RUN apt-get update && \
 # Slicer 5.0.3 https://download.slicer.org/bitstream/62cc52d2aa08d161a31c1af0
 # Slicer 5.2.2 https://download.slicer.org/bitstream/63f5bee68939577d9867b4c7
 # Slicer 5.4.0 https://download.slicer.org/bitstream/64e0b4a006a93d6cff3638c
-# Slicer 5.6.1
-RUN SLICER_URL="https://download.slicer.org/bitstream/657813b183a3201b44d4e6f7" && \
+# Slicer 5.6.1 https://download.slicer.org/bitstream/657813b183a3201b44d4e6f
+# Slicer 5.6.2
+RUN SLICER_URL="https://download.slicer.org/bitstream/660f92ed30e435b0e355f1a4" && \
   wget -O Slicer.tar.gz $SLICER_URL && \
   tar xfz /Slicer.tar.gz -C /tmp && \
   #rm Slicer.tar.gz && \

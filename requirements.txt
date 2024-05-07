@@ -9,3 +9,4 @@ aicspylibczi
 matplotlib
 pymeshlab
 papermill
+shapely
