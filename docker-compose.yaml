@@ -2,7 +2,7 @@
 version: "3"
 services:
   slicer-env:
-    image: gnasello/slicer-env:2024-05-07
+    image: gnasello/slicer-env:2024-05-08
     container_name: slicer
     security_opt:
       - seccomp:unconfined # for terminal to work
