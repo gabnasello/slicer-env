@@ -1,3 +1,3 @@
-VERSION="2024-05-08.2"
+VERSION="2024-06-04"
 
 docker build --no-cache -t gnasello/slicer-env:$VERSION .

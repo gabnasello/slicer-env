@@ -1,4 +1,12 @@
 -------------------------------
+v. 2024-06-04
+
+Install the Python packages below:
+
+- open3d
+- itk
+
+-------------------------------
 v. 2024-05-08.2
 
 Update pyslicer to v.0.2.0

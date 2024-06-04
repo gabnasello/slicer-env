@@ -10,3 +10,5 @@ matplotlib
 pymeshlab
 papermill
 shapely
+open3d
+itk

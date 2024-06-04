@@ -3,7 +3,7 @@ FROM lscr.io/linuxserver/webtop:amd64-ubuntu-kde-version-b7c41cf2
 
 # Configure environment
 ENV DOCKER_IMAGE_NAME='slicer-env'
-ENV VERSION='2024-05-08.2' 
+ENV VERSION='2024-06-04' 
 
 # title
 ENV TITLE="3D Slicer"
@@ -16,7 +16,7 @@ VOLUME /config
 ## Install Slicer
 
 RUN apt-get update && \
-    apt-get install -y vim xvfb git wget apt-transport-https ca-certificates\ 
+    apt-get install -y vim xvfb git wget zip apt-transport-https ca-certificates\ 
                         libfontconfig1 \
                         libxrender1 \
                         libgl1-mesa-dev \
