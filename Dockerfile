@@ -76,3 +76,5 @@ RUN chmod 777 /config/Desktop/jupyter.desktop
 RUN chmod 777 -R /config/
 #RUN chmod 777 -R /config/.cache
 #RUN chmod 777 -R /config/.local
+
+RUN chmod 777 -R /tmp/Slicer-/

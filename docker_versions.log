@@ -1,4 +1,9 @@
 -------------------------------
+v. 2024-08-19
+
+Allow user access to Slicer tmp directory
+
+-------------------------------
 v. 2024-06-04
 
 Install the Python packages below:
