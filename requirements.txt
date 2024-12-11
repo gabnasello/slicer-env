@@ -12,3 +12,7 @@ papermill
 shapely
 open3d
 itk
+skeletor
+openpyxl
+numpy-stl
+manifold3d

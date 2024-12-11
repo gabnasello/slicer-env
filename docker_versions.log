@@ -1,4 +1,16 @@
 -------------------------------
+v. 2024-12-11
+
+Install the Python packages:
+
+skeletor
+openpyxl
+numpy-stl
+manifold3d
+
+And manually adjust skeletor package
+
+-------------------------------
 v. 2024-08-19
 
 Allow user access to Slicer tmp directory

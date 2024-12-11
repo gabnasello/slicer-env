@@ -3,7 +3,7 @@ FROM lscr.io/linuxserver/webtop:amd64-ubuntu-kde-version-b7c41cf2
 
 # Configure environment
 ENV DOCKER_IMAGE_NAME='slicer-env'
-ENV VERSION='2024-06-04' 
+ENV VERSION='2024-12-11' 
 
 # title
 ENV TITLE="3D Slicer"
@@ -62,6 +62,9 @@ RUN xvfb-run --auto-servernum /slicer/Slicer --no-splash --no-main-window --pyth
 ADD requirements.txt /
 RUN /slicer/bin/PythonSlicer -m pip install --upgrade pip && \
     /slicer/bin/PythonSlicer -m pip install -r /requirements.txt
+
+# Modify the skeletor/post/radiusextraction.py file using sed
+RUN sed -i 's/np\.float/float/g' /slicer/lib/Python/lib/python3.9/site-packages/skeletor/post/radiusextraction.py
 
 # Install pyslicer
 RUN git clone https://github.com/gabnasello/pyslicer.git
